@@ -15,7 +15,10 @@ $(document).ready(function(){
     $('.minus').on('click', decrement);
   }
   function increment(){
-    var plusSign =
+    var sib = $(this).siblings()[0];
+    var val = +$(sib).text();
+    $(sib).text(val+1);
+    initGrid();
   }
   function decrement(){
     var sib = $(this).siblings()[0];
