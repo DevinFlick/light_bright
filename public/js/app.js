@@ -1,16 +1,27 @@
 
 $(document).ready(function(){
   var container = $('.container');
-  var numOfRows = 10;
-  var numOfCols = 10;
+  var numOfRows = $('#num-rows');
+  var numOfCols = $('#num-cols');
 
   initGrid();
-  addClickHandlers();
-  // addClickHandlersV2();
+  // addClickHandlers();
+  addClickHandlersV2();
 
   function addClickHandlersV2(){
     var cells = $('.cell');
     cells.on('click', changeColor);
+    $('.plus').on('click', increment);
+    $('.minus').on('click', decrement);
+  }
+  function increment(){
+    var plusSign =
+  }
+  function decrement(){
+    var sib = $(this).siblings()[0];
+    var val = +$(sib).text();
+    $(sib).text(val-1);
+    initGrid();
   }
   function changeColor(){
     var colorClasses = ['white', 'red', 'green', 'blue'];
@@ -27,10 +38,11 @@ $(document).ready(function(){
     }
   }
   function initGrid(){
-    for(var i = 0; i< numOfRows; i += 1){
+    container.html('');
+    for(var i = 0; i< +numOfRows.text(); i += 1){
       var row = $('<div></div>');
       row.addClass('row');
-      for(var j = 0; j < numOfCols; j += 1){
+      for(var j = 0; j < +numOfCols.text(); j += 1){
         var cell = $('<div></div>');
         cell.addClass('cell border');
         row.append(cell);
